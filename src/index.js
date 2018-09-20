@@ -91,16 +91,20 @@ function totalSales(sales) {
   //   sales[key] = total;
   // });
   // return sales;
-  const salesCopy = Object.assign({}, sales);
 
   const keys = Object.keys(sales);
 
-  keys.forEach(person => {
-    return (salesCopy[person] = sales[person].reduce(
+  return keys.reduce((salesCopy, person) => {
+    const salesTotal = sales[person].reduce(
       (acc, item) => acc + item
-    ));
-  });
-  return salesCopy;
+    );
+      console.log(salesCopy);
+    const updateSalesCopy = Object.assign({}, salesCopy, {
+      [person]: salesTotal
+    });
+    console.log(updateSalesCopy);
+    return updateSalesCopy;
+  }, {});
 }
 // stuff is an object with string keys and
 // string values. All keys and values are unique
@@ -111,13 +115,20 @@ function totalSales(sales) {
 //   c: 'd'
 // }
 function swapKeysAndValues(stuff) {
-  Object.keys(stuff).forEach(function(key) {
-    const value = stuff[key];
-    stuff[value] = key;
-    delete stuff[key];
-  });
+  // Object.keys(stuff).forEach(function(key) {
+  //   const value = stuff[key];
+  //   stuff[value] = key;
+  //   delete stuff[key];
+  // });
 
-  return stuff;
+  // return stuff;
+ const keys = Object.keys(stuff);
+ const values = Object.values(stuff);
+ 
+keys.forEach(key =>{
+
+})
+//  const stuffCopy = Object.assign({}, {stuff[key]: key})
 }
 
 // dates is an array of dates in string format

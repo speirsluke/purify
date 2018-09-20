@@ -103,3 +103,15 @@ test('total sales', () => {
   };
   expect(result).toEqual(expected);
 });
+
+test('swap keys and values', () => {
+    const result = {
+        a: 'b',
+        c: 'd'
+    }
+    const expected = {
+        b: 'a', 
+        d: 'c'
+    }
+    expect(result).toEqual(expected);
+})
