@@ -24,18 +24,19 @@ function absolute(numbers) {
 // concatenate first and last names and return
 // resulting array of names
 function concatNames(names) {
-
   return names.map(name => {
-   return `${name.firstName} ${name.lastName}`
-  })
+    return `${name.firstName} ${name.lastName}`;
+  });
 }
 
 // things is an array of numbers and strings. Convert
 // numbers in array to strings. For example 5 to "5"
 function numbersToStrings(things) {
-  for (var i = 0; i < things.length; i++) {
-    things[i] = typeof things[i] === 'number' ? things[i] + '' : things[i];
-  }
+  // for (var i = 0; i < things.length; i++) {
+  //   things[i] = typeof things[i] === 'number' ? things[i] + '' : things[i];
+  // }
+
+  return things.map(item => item.toString());
 }
 
 // strings is an array of strings. sort them by length
@@ -155,5 +156,6 @@ function parseDates(dates) {
 module.exports = {
   multiply,
   absolute,
-  concatNames
+  concatNames,
+  numbersToStrings
 };
