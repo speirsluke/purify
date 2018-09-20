@@ -41,9 +41,12 @@ function numbersToStrings(things) {
 
 // strings is an array of strings. sort them by length
 function sortByLength(strings) {
-  strings.sort(function(a, b) {
-    return a.length - b.length;
-  });
+
+
+const sortedStrings = strings;
+return sortedStrings.sort(function(a, b) {
+  return a.length - b.length;
+});
 }
 
 // numbers is an array of numbers. Get last two numbers
@@ -157,5 +160,6 @@ module.exports = {
   multiply,
   absolute,
   concatNames,
-  numbersToStrings
+  numbersToStrings,
+  sortByLength
 };

@@ -1,4 +1,4 @@
-const { multiply, absolute, concatNames, numbersToStrings } = require('../src');
+const { multiply, absolute, concatNames, numbersToStrings, sortByLength} = require('../src');
 
 test('multiply', () => {
   const result = multiply([5, 6, 2, 3, 5], 2);
@@ -27,8 +27,14 @@ test('concat names', () => {
   expect(result).toEqual(expected);
 });
 
-test.only('number to strings', () => {
+test('number to strings', () => {
   const result = numbersToStrings([1, 2, 3]);
   const expected = ['1', '2', '3'];
   expect(result).toEqual(expected);
 });
+
+test('sort by length', () => {
+    const result = sortByLength(["a", "abc", "ab"]);
+    const expected = ["a", "ab", "abc"];
+    expect(result).toEqual(expected);
+})
