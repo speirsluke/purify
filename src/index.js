@@ -51,9 +51,7 @@ function sortByLength(strings) {
 // from numbers
 function lastTwo(numbers) {
   // return numbers.splice(-2);
-  return numbers.filter(
-    (item, i) => i === numbers.length - 1 || i === numbers.length - 2
-  );
+  return numbers.filter((item, i) => i >= numbers.length - 2);
 }
 
 // cars is an array of car objects which look like
