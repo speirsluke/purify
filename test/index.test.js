@@ -4,7 +4,8 @@ const {
   concatNames,
   numbersToStrings,
   sortByLength,
-  lastTwo
+  lastTwo,
+  incrementYear
 } = require('../src');
 
 test('multiply', () => {
@@ -50,4 +51,44 @@ test('last two', () => {
   const result = lastTwo([1, 2, 3, 4]);
   const expected = [3, 4];
   expect(result).toEqual(expected);
+});
+
+test('increment year', () => {
+    const result = incrementYear([
+        {
+          make: "Vauxhall",
+          model: "Astra",
+          year: 1992
+        },  
+        {
+            make: "Ford",
+            model: "Focus",
+            year: 1998
+          }, 
+          {
+            make: "Vauxhall",
+            model: "Astra",
+            year: 2016
+          }, 
+        
+    ]);
+    const expected = [
+        {
+          make: "Vauxhall",
+          model: "Astra",
+          year: 1993
+        },  
+        {
+            make: "Ford",
+            model: "Focus",
+            year: 1999
+          }, 
+          {
+            make: "Vauxhall",
+            model: "Astra",
+            year: 2017
+          }, 
+        
+    ];
+    expect(result).toEqual(expected);
 });

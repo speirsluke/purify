@@ -63,11 +63,14 @@ function lastTwo(numbers) {
 // }
 // increment the years by one year for all cars
 function incrementYear(cars) {
-  for (var i = 0; i < cars.length; i++) {
-    cars[i].year++;
-  }
-  return cars;
-}
+  // for (var i = 0; i < cars.length; i++) {
+  //   cars[i].year++;
+  // }
+ return cars.map(car => {
+   return Object.assign({}, car, {year: car.year + 1})
+  });
+
+};
 
 // sales is an object where the key is
 // the salespersons name and the value
@@ -161,5 +164,6 @@ module.exports = {
   concatNames,
   numbersToStrings,
   sortByLength,
-  lastTwo
+  lastTwo,
+  incrementYear
 };
