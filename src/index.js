@@ -41,18 +41,19 @@ function numbersToStrings(things) {
 
 // strings is an array of strings. sort them by length
 function sortByLength(strings) {
-
-
-const sortedStrings = strings;
-return sortedStrings.sort(function(a, b) {
-  return a.length - b.length;
-});
+  const sortedStrings = strings;
+  return sortedStrings.sort(function(a, b) {
+    return a.length - b.length;
+  });
 }
 
 // numbers is an array of numbers. Get last two numbers
 // from numbers
 function lastTwo(numbers) {
-  return numbers.splice(-2);
+  // return numbers.splice(-2);
+  return numbers.filter(
+    (item, i) => i === numbers.length - 1 || i === numbers.length - 2
+  );
 }
 
 // cars is an array of car objects which look like
@@ -161,5 +162,6 @@ module.exports = {
   absolute,
   concatNames,
   numbersToStrings,
-  sortByLength
+  sortByLength,
+  lastTwo
 };
