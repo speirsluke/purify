@@ -7,7 +7,8 @@ const {
   lastTwo,
   incrementYear,
   totalSales,
-  swapKeysAndValues
+  swapKeysAndValues,
+  parseDates
 } = require('../src');
 
 test('multiply', () => {
@@ -105,14 +106,20 @@ test('total sales', () => {
   expect(result).toEqual(expected);
 });
 
-test.only('swap keys and values', () => {
-    const result = swapKeysAndValues({
-        a: 'b',
-        c: 'd'
-    });
-    const expected = {
-        b: 'a', 
-        d: 'c'
-    };
-    expect(result).toEqual(expected);
-})
+test('swap keys and values', () => {
+  const result = swapKeysAndValues({
+    a: 'b',
+    c: 'd'
+  });
+  const expected = {
+    b: 'a',
+    d: 'c'
+  };
+  expect(result).toEqual(expected);
+});
+
+test.only('parse dates', () => {
+  const result = parseDates(['2018-02-12', '2017-08-24']);
+  const expected = ['12th Feb 2018', '24th Aug 2017'];
+  expect(result).toEqual(expected);
+});

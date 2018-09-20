@@ -80,32 +80,57 @@ function incrementYear(cars) {
 //   Mary: [57, 12, 31, 4],
 //   Dave: [43, 2, 12]
 // }
+// function totalSales(sales) {
+// Object.keys(sales).forEach(function(key) {
+//   let total = 0;
+
+//   for (var i = 0; i < sales[key].length; i++) {
+//     total = total + sales[key][i];
+//   }
+
+//   sales[key] = total;
+// });
+// return sales;
+
+//   const keys = Object.keys(sales);
+
+//   return keys.reduce((salesCopy, person) => {
+//     const salesTotal = sales[person].reduce((acc, item) => acc + item);
+//     console.log(salesCopy);
+//     const updateSalesCopy = Object.assign({}, salesCopy, {
+//       [person]: salesTotal
+//     });
+//     console.log(updateSalesCopy);
+//     return updateSalesCopy;
+//   }, {});
+// }
+
+// function totalSales(sales) {
+//   const keys = Object.keys(sales);
+
+//   return keys.reduce((salesCopy, person) => {
+//     const salesTotal = sales[person].reduce((acc, item) => acc + item); // get total sales of each person by summing the array of their sales
+//     const updateSalesCopy = Object.assign({}, salesCopy, {
+//       [person]: salesTotal
+//     });
+//     console.log(updateSalesCopy);
+//     return updateSalesCopy;
+//   }, {}); // instantiate acc with an empty object
+// }
+
 function totalSales(sales) {
-  // Object.keys(sales).forEach(function(key) {
-  //   let total = 0;
-
-  //   for (var i = 0; i < sales[key].length; i++) {
-  //     total = total + sales[key][i];
-  //   }
-
-  //   sales[key] = total;
-  // });
-  // return sales;
-
   const keys = Object.keys(sales);
 
   return keys.reduce((salesCopy, person) => {
-    const salesTotal = sales[person].reduce(
-      (acc, item) => acc + item
-    );
-      console.log(salesCopy);
-    const updateSalesCopy = Object.assign({}, salesCopy, {
-      [person]: salesTotal
-    });
-    console.log(updateSalesCopy);
-    return updateSalesCopy;
-  }, {});
+    // get total sales of each person by summing the array of their sales
+    const salesTotal = sales[person].reduce((acc, item) => acc + item);
+    // assign person and their sales to the salesCopy object 'acc'
+    salesCopy = Object.assign({}, salesCopy, { [person]: salesTotal });
+    // console.log(updateSalesCopy);
+    return salesCopy;
+  }, {}); // instantiate acc with an empty object
 }
+
 // stuff is an object with string keys and
 // string values. All keys and values are unique
 // Swap keys and values around, so that keys
@@ -122,18 +147,21 @@ function swapKeysAndValues(stuff) {
   // });
 
   // return stuff;
- const keys = Object.keys(stuff);
- const values = Object.values(stuff);
- const stuffNew = {};
- console.log(keys);
- console.log(values);
 
-keys.forEach((key, i) =>{
-stuffNew[values[i]] = key;
-console.log(stuffNew)
-})
-return stuffNew;
-//  const stuffCopy = Object.assign({}, {stuff[key]: key})
+  const keys = Object.keys(stuff);
+  const values = Object.values(stuff);
+
+  // const stuffNew = {};
+  // keys.forEach((key, i) => {
+  //   stuffNew[values[i]] = key;
+  //   console.log(stuffNew);
+  // });
+  // return stuffNew;
+
+  // refactored forEach as reduce
+  return keys.reduce((stuffNew, key, i) => {
+    return (stuffNew = Object.assign({}, stuffNew, { [values[i]]: key }));
+  }, {});
 }
 
 // dates is an array of dates in string format
@@ -148,9 +176,15 @@ function parseDates(dates) {
 
     var year = parseInt(dateParts[0]);
     var month = parseInt(dateParts[1]);
-    var date = parseInt(dateParts[2]);
+    var day = parseInt(dateParts[2]);
 
-    dates[i] = new Date(year, month, date);
+    const date = new Date(Date.UTC(year, month - 1, day));
+    // dates[i] = date.toLocaleDateString('en-US', {
+    //   day: 'numeric',
+    //   month: 'short',
+    //   year: 'numeric'
+    // });
+    dates[i] = date.toDateString().slice(4);
   }
   return dates;
 }
@@ -193,5 +227,6 @@ module.exports = {
   lastTwo,
   incrementYear,
   totalSales,
-  swapKeysAndValues
+  swapKeysAndValues,
+  parseDates
 };
