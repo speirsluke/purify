@@ -5,7 +5,8 @@ const {
   numbersToStrings,
   sortByLength,
   lastTwo,
-  incrementYear
+  incrementYear,
+  totalSales
 } = require('../src');
 
 test('multiply', () => {
@@ -54,41 +55,51 @@ test('last two', () => {
 });
 
 test('increment year', () => {
-    const result = incrementYear([
-        {
-          make: "Vauxhall",
-          model: "Astra",
-          year: 1992
-        },  
-        {
-            make: "Ford",
-            model: "Focus",
-            year: 1998
-          }, 
-          {
-            make: "Vauxhall",
-            model: "Astra",
-            year: 2016
-          }, 
-        
-    ]);
-    const expected = [
-        {
-          make: "Vauxhall",
-          model: "Astra",
-          year: 1993
-        },  
-        {
-            make: "Ford",
-            model: "Focus",
-            year: 1999
-          }, 
-          {
-            make: "Vauxhall",
-            model: "Astra",
-            year: 2017
-          }, 
-        
-    ];
-    expect(result).toEqual(expected);
+  const result = incrementYear([
+    {
+      make: 'Vauxhall',
+      model: 'Astra',
+      year: 1992
+    },
+    {
+      make: 'Ford',
+      model: 'Focus',
+      year: 1998
+    },
+    {
+      make: 'Vauxhall',
+      model: 'Astra',
+      year: 2016
+    }
+  ]);
+  const expected = [
+    {
+      make: 'Vauxhall',
+      model: 'Astra',
+      year: 1993
+    },
+    {
+      make: 'Ford',
+      model: 'Focus',
+      year: 1999
+    },
+    {
+      make: 'Vauxhall',
+      model: 'Astra',
+      year: 2017
+    }
+  ];
+  expect(result).toEqual(expected);
+});
+
+test('total sales', () => {
+  const result = totalSales({
+    Mary: [1, 2, 3, 4],
+    Dave: [3, 4, 5]
+  });
+  const expected = {
+    Mary: 10,
+    Dave: 12
+  };
+  expect(result).toEqual(expected);
 });

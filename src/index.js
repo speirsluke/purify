@@ -66,11 +66,10 @@ function incrementYear(cars) {
   // for (var i = 0; i < cars.length; i++) {
   //   cars[i].year++;
   // }
- return cars.map(car => {
-   return Object.assign({}, car, {year: car.year + 1})
+  return cars.map(car => {
+    return Object.assign({}, car, { year: car.year + 1 });
   });
-
-};
+}
 
 // sales is an object where the key is
 // the salespersons name and the value
@@ -82,15 +81,26 @@ function incrementYear(cars) {
 //   Dave: [43, 2, 12]
 // }
 function totalSales(sales) {
-  Object.keys(sales).forEach(function(key) {
-    let total = 0;
+  // Object.keys(sales).forEach(function(key) {
+  //   let total = 0;
 
-    for (var i = 0; i < sales[key].length; i++) {
-      total = total + sales[key][i];
-    }
+  //   for (var i = 0; i < sales[key].length; i++) {
+  //     total = total + sales[key][i];
+  //   }
 
-    sales[key] = total;
+  //   sales[key] = total;
+  // });
+  // return sales;
+  const salesCopy = Object.assign({}, sales);
+
+  const keys = Object.keys(sales);
+
+  keys.forEach(person => {
+    return (salesCopy[person] = sales[person].reduce(
+      (acc, item) => acc + item
+    ));
   });
+  return salesCopy;
 }
 // stuff is an object with string keys and
 // string values. All keys and values are unique
@@ -165,5 +175,6 @@ module.exports = {
   numbersToStrings,
   sortByLength,
   lastTwo,
-  incrementYear
+  incrementYear,
+  totalSales
 };
