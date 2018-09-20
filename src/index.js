@@ -124,10 +124,15 @@ function swapKeysAndValues(stuff) {
   // return stuff;
  const keys = Object.keys(stuff);
  const values = Object.values(stuff);
- 
-keys.forEach(key =>{
+ const stuffNew = {};
+ console.log(keys);
+ console.log(values);
 
+keys.forEach((key, i) =>{
+stuffNew[values[i]] = key;
+console.log(stuffNew)
 })
+return stuffNew;
 //  const stuffCopy = Object.assign({}, {stuff[key]: key})
 }
 
@@ -187,5 +192,6 @@ module.exports = {
   sortByLength,
   lastTwo,
   incrementYear,
-  totalSales
+  totalSales,
+  swapKeysAndValues
 };

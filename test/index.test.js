@@ -6,7 +6,8 @@ const {
   sortByLength,
   lastTwo,
   incrementYear,
-  totalSales
+  totalSales,
+  swapKeysAndValues
 } = require('../src');
 
 test('multiply', () => {
@@ -104,14 +105,14 @@ test('total sales', () => {
   expect(result).toEqual(expected);
 });
 
-test('swap keys and values', () => {
-    const result = {
+test.only('swap keys and values', () => {
+    const result = swapKeysAndValues({
         a: 'b',
         c: 'd'
-    }
+    });
     const expected = {
         b: 'a', 
         d: 'c'
-    }
+    };
     expect(result).toEqual(expected);
 })
