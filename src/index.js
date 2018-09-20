@@ -24,10 +24,10 @@ function absolute(numbers) {
 // concatenate first and last names and return
 // resulting array of names
 function concatNames(names) {
-  for (var i = 0; i < names.length; i++) {
-    names[i] = `${names[i].firstName} ${names[i].lastName}`;
-  }
-  return names;
+
+  return names.map(name => {
+   return `${name.firstName} ${name.lastName}`
+  })
 }
 
 // things is an array of numbers and strings. Convert
@@ -154,5 +154,6 @@ function parseDates(dates) {
 
 module.exports = {
   multiply,
-  absolute
+  absolute,
+  concatNames
 };

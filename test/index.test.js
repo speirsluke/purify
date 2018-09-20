@@ -1,4 +1,4 @@
-const { multiply, absolute } = require('../src');
+const { multiply, absolute, concatNames } = require('../src');
 
 test('multiply', () => {
   const result = multiply([5, 6, 2, 3, 5], 2);
@@ -11,3 +11,17 @@ test('absolute', () => {
   const expected = [1, 1, 0];
   expect(result).toEqual(expected);
 });
+
+test('concat names', () => {
+    const result = concatNames([{
+          firstName: 'Alan',
+          lastName: 'Sugar'
+        },
+        { 
+            firstName: 'John', 
+            lastName: 'Smith'
+        }
+    ])
+    const expected = ["Alan Sugar", "John Smith"];
+    expect(result).toEqual(expected);
+} )
