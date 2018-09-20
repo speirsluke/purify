@@ -1,12 +1,16 @@
 // numbers is an array of numbers. Multiply all
 // numbers contained in array by multiplier
 function multiply(numbers, multiplier){
-  for(var i = 0; i < numbers.length; i++){
-    numbers[i] = numbers[i] * multiplier;
-  }
+  // for(var i = 0; i < numbers.length; i++){
+  //   numbers[i] = numbers[i] * multiplier;
+  // }
 
-  return numbers;
+  return numbers.map(item => item * multiplier);
 }
+
+
+
+
 
 // is an array of positive and negative numbers
 // make them all absolute numbers
@@ -150,3 +154,7 @@ function parseDates(dates){
 // Implement a solution using multiple pure functions
 
 // Write a unit test for each function
+
+module.exports = { 
+  multiply
+}
